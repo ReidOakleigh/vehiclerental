@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Customer</title>
+<link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<h2>Insert/Update Customer</h2>
+	<form id="newCust" th:object="${newCust}" th:action="@{/update/{id}(id=${newCust.id})}" method='POST'>
+		<table>
+			<tr>
+				<td><label for="name">Name </label>
+					<input id="name" name="name" size="40" th:field="*{name}" required/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="birthDate">Birthday </label>
+					<input id="birthDate" name="birthDate" size="10" th:field="*{birthDate}" required/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="license">Drivers License </label>
+					<input id="license" name="license" size="10" th:field="*{license}" required/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="insurance">Insurance </label>
+					<input id="insurance" name="insurance" size="40" th:field="*{insurance}" required/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="telephone">Telephone </label>
+					<input id="telephone" name="telephone" size="12" th:field="*{telephone}" required/><br />
+				</td>
+			</tr>
+		</table>
+		<br /> <input name="submit" type="submit" value="submit" />
+	</form>
+	<br />
+	<a href="viewCustomers">View all customers</a>
+</body>
+</html>
