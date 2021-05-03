@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Rental</title>
+<link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<h2>View Rental</h2>
+	<form id="rental" th:object="${rental}"
+			th:action="@{/saveRental/{id}(id=${rental.rentalId})}" method='POST'>
+		<table>
+			<tr>
+				<td><label for="custName">Customer Name</label>
+					<input th:type="text" id="custName" name="custName" readonly
+						   th:field="${rental.customer.custName}"/><br/>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="make">Vehicle Make</label>
+					<input th:type="text" id="make" name="make" readonly
+						   th:field="${rental.vehicle.make}"/><br/>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="model">Vehicle Model</label>
+					<input th:type="text" id="model" name="make" readonly
+						   th:field="${rental.vehicle.model}"/><br/>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="returned">Returned </label>
+					<input th:type="checkbox" id="returned" name="returned"
+						 th:field="*{returned}"/><br />
+				</td>
+			</tr>
+		</table>
+		<br /> <input name="submit" type="submit" value="submit" />
+	</form>
+	<br />
+	<a href="/viewRentals">View all Rentals</a><br/>
+	<a href="/">Return to menu</a>
+</body>
+</html>

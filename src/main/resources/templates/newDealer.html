@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Dealership</title>
+<link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<h2>Insert/Update Dealership</h2>
+	<form id="newDealership" th:object="${newDealership}" 
+		th:action="@{/updateDealer/{id}(id=${newDealership.dealerId})}" method='POST'>
+		<table>
+			<tr>
+				<td><label for="name">Name </label>
+					<input id="name" name="name" size="40" th:field="*{name}" required/><br />
+				</td>
+			</tr>
+		</table>
+		<br /> <input name="submit" type="submit" value="submit" />
+	</form>
+	<br />
+	<a href="/viewDealers">View all Dealerships</a><br/>
+	<a href="/">Return to menu</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rentals</title>
+<link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<h2>Rentals</h2>
+	<form>
+		<table>
+			<tr>
+				<th class="id">Id</th>
+				<th class="customer">Customer Name></th>
+				<th class="make">Vehicle Make</th>
+				<th class="model">Vehicle Model</th>
+				<th class="returned">Rental Returned?</th>
+				<th class="action">Action</th>
+			</tr>
+			<tr th:each="rental:${rentals}">
+				<td class="id" th:text="${rental.rentalId}"></td>
+				<td class="customer" th:text="${rental.customer.custName}"></td>
+				<td class="make" th:text="${rental.vehicle.make}"></td>
+				<td class="model" th:text="${rental.vehicle.model}"></td>
+				<td class="returned" th:text="${rental.returned}? 'Yes' : 'No'"></td>
+				<td class="action"><a th:href="@{/viewRental/{id}(id=${rental.rentalId})}">Return</a></td>
+			</tr>
+		</table>
+	</form>
+
+
+	<br />
+	<a href="/inputRental">Create a Rental</a><br/>
+	<a href="/">Return to menu</a>
+
+</body>
+</html>

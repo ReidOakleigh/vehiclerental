@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Vehicle</title>
+<link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<h2>Insert/Update Vehicle</h2>
+	<form id="newVehicle" th:object="${newVehicle}" 
+			th:action="@{/updateVehicle/{id}(id=${newVehicle.vehicleId})}" method='POST'>
+		<table>
+			<tr>
+				<td><label for="model">Model </label>
+					<input id="model" name="model" size="20" th:field="*{model}" required/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="make">Make </label>
+					<input id="make" name="make" size="10" th:field="*{make}" required/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="age">Age </label>
+					<input id="age" name="age" th:field="*{age}" required/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="availability">Availability </label>
+					<input type="checkbox" id="availability" name="availability" 
+						 th:field="*{availability}"/><br />
+				</td>
+			</tr>
+			<tr>
+				<td><label for="dealer">Dealer</label>
+					<select id="dealer" th:field="*{dealer}">
+						<option value=""> -- </option>
+						<option th:each="dealership: ${dealerships}"
+							th:value="${dealership.dealerId}" th:utext="${dealership.name}"></option>
+					</select> <br />	
+				</td>
+		</table>
+		<br /> <input name="submit" type="submit" value="submit" />
+	</form>
+	<br />
+	<a href="/viewVehicles">View all Vehicles</a><br/>
+	<a href="/">Return to menu</a>
+</body>
+</html>

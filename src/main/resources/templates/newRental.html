@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Create New Rental</title>
+<link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<h2>Create New Rental</h2>
+	<form id="rental" th:object="${rental}"
+			th:action="@{/saveRental/{id}(id=${rental.rentalId})}" method='POST'>
+		<table>
+			<tr>
+				<td><label for="customer">customer</label>
+					<select id="customer" th:field="*{customer}">
+						<option value=""> -- </option>
+						<option th:each="customer: ${customers}"
+							th:value="${customer.id}" th:text="${customer.custName}"></option>
+					</select> <br />	
+				</td>
+			<tr>
+				<td><label for="vehicle">vehicle</label>
+					<select id="vehicle" th:field="*{vehicle}">
+						<option value=""> -- </option>
+						<option th:each="vehicle: ${vehicles}"
+								th:value="${vehicle.vehicleId}" th:text="${vehicle.make + vehicle.model}"></option>
+					</select> <br />
+				</td>
+		</table>
+		<br /> <input name="submit" type="submit" value="submit" />
+	</form>
+	<br />
+	<a href="/viewVehicles">View all Vehicles</a><br/>
+	<a href="/">Return to menu</a>
+</body>
+</html>

@@ -8,37 +8,41 @@
 
 <body>
 	<h2>Insert/Update Customer</h2>
-	<form id="newCust" th:object="${newCust}" th:action="@{/update/{id}(id=${newCust.id})}" method='POST'>
+	<form id="newCust" th:object="${newCust}" th:action="@{/updateCust/{id}(id=${newCust.id})}" method='POST'>
 		<table>
 			<tr>
 				<td><label for="name">Name </label>
-					<input id="name" name="name" size="40" th:field="*{name}" required/><br />
+					<input id="name" name="name" size="40" th:field="*{custName}" required/><br />
 				</td>
 			</tr>
 			<tr>
 				<td><label for="birthDate">Birthday </label>
-					<input id="birthDate" name="birthDate" size="10" th:field="*{birthDate}" required/><br />
+					<input id="birthdate" name="birthdate" type="text" th:field="*{birthdate}"
+						   th:text="${#dates.format(birthdate,'MM-dd-yyyy')}" th:placeholder="mm--dd-yyyy"
+						   required/><br />
 				</td>
 			</tr>
 			<tr>
 				<td><label for="license">Drivers License </label>
-					<input id="license" name="license" size="10" th:field="*{license}" required/><br />
+					<input id="license" name="driversLicense" maxlength="10" type="text" th:field="*{driversLicense}" required/><br />
 				</td>
 			</tr>
 			<tr>
 				<td><label for="insurance">Insurance </label>
-					<input id="insurance" name="insurance" size="40" th:field="*{insurance}" required/><br />
+					<input id="insurance" name="insurance" type="text" th:field="*{insurance}" required/><br />
 				</td>
 			</tr>
 			<tr>
-				<td><label for="telephone">Telephone </label>
-					<input id="telephone" name="telephone" size="12" th:field="*{telephone}" required/><br />
+				<td><label for="phoneNumber">Telephone </label>
+					<input id="phoneNumber" name="phoneNumber" maxlength="10" type="text" th:field="*{phoneNumber}"
+						   th:placeholder="nnnnnnnnnn" required/><br />
 				</td>
 			</tr>
 		</table>
 		<br /> <input name="submit" type="submit" value="submit" />
 	</form>
 	<br />
-	<a href="viewCustomers">View all customers</a>
+	<a href="/viewCustomers">View all customers</a><br/>
+	<a href="/">Return to menu</a>
 </body>
 </html>

@@ -21,20 +21,20 @@
 			</tr>
 			<tr th:each="cust:${customers}">
 				<td class="id" th:text="${cust.id}"></td>
-				<td class="name" th:text="${cust.name}"></td>
-				<td class="birthdate" th:text="${cust.birthDate}"></td>
-				<td class="license" th:text="${cust.driverLicense}"></td>
+				<td class="name" th:text="${cust.custName}"></td>
+				<td class="birthdate" th:text="${#dates.format(cust.birthdate,'MM-dd-yyyy')}"></td>
+				<td class="license" th:text="${cust.driversLicense}"></td>
 				<td class="insurance" th:text="${cust.insurance}"></td>
 				<td class="phone" th:text="${cust.phoneNumber}"></td>
-				<td class="action"><a th:href="@{/edit/{id}(id=${cust.id})}">Edit</a></td>
-				<td class="action"><a th:href="@{/delete/{id}(id=${cust.id})}">Delete</a></td>
+				<td class="action"><a th:href="@{/editCust/{id}(id=${cust.id})}">Edit</a></td>
+				<td class="action"><a th:href="@{/deleteCust/{id}(id=${cust.id})}">Delete</a></td>
 			</tr>
 		</table>
 	</form>
 
 
 	<br />
-	<a href="/inputCustomer">Add a new customer</a>
-
+	<a href="/inputCustomer">Add a new customer</a><br/>
+	<a href="/">Return to menu</a>
 </body>
 </html>

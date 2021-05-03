@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vehicles</title>
+<link th:href="@{/styles.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<h2>Vehicles</h2>
+	<form>
+		<table>
+			<tr>
+				<th class="id">Id</th>
+				<th class="model">Vehicle Model</th>
+				<th class="make">Vehicle Make</th>
+				<th class="age">Vehicle Age</th>
+				<th class="avail">Vehicle Avail?</th>
+				<th class="dealer">Dealer Name></th>
+				<th class="action" th:colspan="2">Action</th>
+			</tr>
+			<tr th:each="vehicle:${vehicles}">
+				<td class="id" th:text="${vehicle.vehicleId}"></td>
+				<td class="model" th:text="${vehicle.model}"></td>
+				<td class="make" th:text="${vehicle.make}"></td>
+				<td class="age" th:text="${vehicle.age}"></td>
+				<td class="avail" th:text="${vehicle.availability}? 'Yes' : 'No'"></td>
+				<td class="dealer" th:text="${vehicle.dealer.name}"></td>
+				<td class="action"><a th:href="@{/editVehicle/{id}(id=${vehicle.vehicleId})}">Edit</a></td>
+				<td class="action"><a th:href="@{/deleteVehicle/{id}(id=${vehicle.vehicleId})}">Delete</a></td>
+			</tr>
+		</table>
+	</form>
+
+
+	<br />
+	<a href="/inputVehicle">Add a new vehicle</a><br/>
+	<a href="/">Return to menu</a>
+
+</body>
+</html>
